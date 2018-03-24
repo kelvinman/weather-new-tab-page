@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
+        $.getJSON('https://fcc-weather-api.glitch.me/api/current?lat=33.7&lon=-117.8', function(data) {
+            console.log(data.main.temp);
+            $("#quote").remove();
+            $("div").append("<div id='quote'><strong> This hour the temperature is " + fahrenheit(data.main.temp) + " degrees Fahrenheit with the wind at " + data.wind.speed + " knots.</strong></div>")
+        });
+
+        var fahrenheit = function(temp) {
+            return Math.round(temp * 9/5 + 32);
+        };
+
+        $(document).ready(function() {
+
+        });
+
+        </script>
+        
+    </head>
+    <body>
+
+        <button id="new-quote"><strong>NEW QUOTE</strong></button>
+        <a class="twitter-share-button" target="_blank"><button><strong>TWEET</strong></button></a>
+        <div id="quote-and-title"></div>
+        <h6>Written and coded by Kelvin Man.</h6>
+
+    </body>
+</html>
